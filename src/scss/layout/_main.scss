@@ -1,0 +1,92 @@
+@use "base/variables" as v;
+@use "base/mixins" as m;
+body{
+    background-color: #ECE7B4;
+    &.negro{
+        background-color: rgb(0 0 0 / .8);
+
+
+
+    }
+}
+
+    .contenido-main{
+        .titule{
+            font-size: 2.8rem;
+            font-weight: 200;
+            @include m.tablet{
+                font-size: 6rem;
+                font-weight: bold;
+
+            }
+            padding: 1rem;
+            margin: 0;
+            -webkit-text-stroke: 2px darken(v.$amarillo,8%);
+            color: v.$amarillo;
+        }
+
+        .unidades{
+            display: grid;
+            grid-template-columns: 3;
+            gap: 2rem;
+            .contenedor-unidad{
+               
+                    
+                 @include m.boton(v.$greenLight,v.$blanco);
+                 button{
+                    margin: 0;
+                    border: none;
+                    padding: 1rem 5rem;
+                    border-radius: 1rem;
+                    background-color: v.$amarillo;
+                    color: v.$blanco;
+                    
+                 }
+                    
+                }
+        }
+        .modal{
+            position: absolute;
+            background-color: rgb(0 0 0 / .8);
+            top: 0;
+            right: 0;
+            left: 0;
+            bottom:0;
+            
+            .teoria{
+                overflow: scroll;
+                &::-webkit-scrollbar {
+                    display: none;
+                }
+                width: 80%;
+                
+            
+                background-color: v.$blanco;
+                padding: 2rem;
+                margin: 0 auto;
+                transform: translateY(-30rem);
+                transition-property: transform,opacity;
+                transition-duration: 400ms;
+                transition-timing-function: ease-in-out;
+                opacity: 0;
+                border-radius: 1rem;
+
+                &.animar{
+                    position: relative;
+
+                    top: 35%;
+                    opacity: 1;
+                }
+
+                &.cerrar{
+                    transform: translateY(-500%);
+                    opacity: 0;
+                }
+                .cerrar-modal{
+                    @include m.boton(v.$amarillo,v.$blanco);
+                    border-radius: 1rem;
+                }
+            }
+        }
+    }
+
